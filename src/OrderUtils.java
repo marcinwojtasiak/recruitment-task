@@ -18,15 +18,15 @@ public class OrderUtils
     {
         // validate products
         if (products == null)
-            throw new NullPointerException();
+            throw new NullPointerException("products is null");
         if (products.size() > 5 || products.size() < 1)
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Invalid products size");
 
         int totalPrice = products.stream().mapToInt(Product::getPrice).sum();
 
         // validate totalDiscount
         if (totalDiscount > totalPrice || totalDiscount < 0)
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Invalid totalDiscount");
 
         HashMap<Product, Integer> result = new HashMap<>();
         int totalDistributed = 0; // discount that have been already distributed
